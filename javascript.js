@@ -1,4 +1,6 @@
 const buttons = document.querySelectorAll('.button');
+const darkButtons = document.querySelectorAll('.dark');
+const orangeButtons = document.querySelectorAll('.orange');
 const display = document.querySelector('.display');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -8,8 +10,15 @@ buttons.forEach((button) => {
             }else{
                 display.textContent += button.textContent;          
             }
+        }else if (button.textContent === 'C') {
+            clear();
+            button
         }
 
         
     })
 })
+
+function clear() {
+    display.textContent = 0;
+}
