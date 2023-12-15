@@ -1,40 +1,29 @@
 body {
-    background-color: black;
+    background-color: white;
     display: flex;
     justify-content: center;
     font-family: sans-serif
 }
 
 .calculator {
-    width: 550px;
-    height: 1000px;
-    background-color: rgb(33, 36, 61);
     margin: 50px;
     display: flex;
     flex-direction: column;
-    border-radius: 25px;
 }
 
 .display {
     width: 550px;
     height: 200px;
     background-color: rgb(33, 36, 61);
-    border-radius: 25px;
+    border-radius: 25px 25px 0 0;
     display: flex;
     justify-content: end;
     align-items: end;
-
-}
-
-.operations {
-    display: flex;
     color: white;
-    margin: 20px;
     font-size: 80px;
-    justify-content: end;
-    align-items: end;
+    padding: 20px;
+    box-sizing: border-box;
 }
-
 
 .buttons {
     display: flex;
