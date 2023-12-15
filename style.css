@@ -40,7 +40,7 @@ body {
 }
 
 .button {
-    background-color: rgb(207, 202, 202);
+    background-color: rgba(207, 202, 202, 1);
     width: 137.5px;
     height: 160px;
     display: flex;
@@ -53,11 +53,11 @@ body {
 }
 
 .dark {
-    background-color:rgb(112, 114, 132);
+    background-color:rgba(112, 114, 132, 1);
 }
 
 .orange {
-    background-color:rgb(239, 153, 23);
+    background-color:rgba(239, 153, 23, 1);
 }
 
 
