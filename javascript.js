@@ -1,15 +1,7 @@
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
+const buttons = document.querySelectorAll('.button');
+const operations = document.querySelector('.operations');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        operations.textContent = button.textContent;
+    })
+})
