@@ -31,7 +31,6 @@ body {
     color: white;
     margin: 20px;
     font-size: 80px;
-    font-weight: bold;
     justify-content: end;
     align-items: end;
 }
@@ -72,7 +71,7 @@ body {
 }
 
 .zero {
-    width: 274px;
+    width: 275px;
 }
 
 .roundl {
