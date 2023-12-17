@@ -4,7 +4,7 @@ const orangeButtons = document.querySelectorAll('.orange');
 const display = document.querySelector('.display');
 const dot = document.querySelector('.dot');
 
-let a;
+let a = display.textContent;
 let b;
 
 buttons.forEach((button) => {
@@ -80,6 +80,24 @@ orangeButtons.forEach((orangeButton) => {
                     a = parseInt(a);
                     b = parseInt(b);
                     display.textContent = a + b;
+                    a = String(display.textContent);
+                    b = undefined;
+                }else if (orangeBorder.textContent === '-') {
+                    a = parseInt(a);
+                    b = parseInt(b);
+                    display.textContent = a - b;
+                    a = String(display.textContent);
+                    b = undefined;
+                }else if (orangeBorder.textContent === '\u00F7') {
+                    a = parseInt(a);
+                    b = parseInt(b);
+                    display.textContent = a / b;
+                    a = String(display.textContent);
+                    b = undefined;
+                }else if (orangeBorder.textContent === '\u00D7') {
+                    a = parseInt(a);
+                    b = parseInt(b);
+                    display.textContent = a * b;
                     a = String(display.textContent);
                     b = undefined;
                 }
