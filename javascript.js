@@ -39,7 +39,7 @@ buttons.forEach((button) => {
             return orangeButton.classList.contains('active');
          })) {
             if(!b) {
-                clear();
+                display.textContent = '0';
             }
             if (display.textContent === '0') {
                 display.textContent = button.textContent;
@@ -74,43 +74,59 @@ darkButtons.forEach((darkButton) => {
 orangeButtons.forEach((orangeButton) => {
     orangeButton.addEventListener('click', () => {
         orangeButtons.forEach((orangeBorder) => {
-            if (orangeBorder.classList.contains('active')) {
-                orangeBorder.classList.remove('active');
-                if (orangeBorder.textContent === '+') {
-                    a = parseInt(a);
-                    b = parseInt(b);
-                    display.textContent = a + b;
-                    a = String(display.textContent);
-                    b = undefined;
-                }else if (orangeBorder.textContent === '-') {
-                    a = parseInt(a);
-                    b = parseInt(b);
-                    display.textContent = a - b;
-                    a = String(display.textContent);
-                    b = undefined;
-                }else if (orangeBorder.textContent === '\u00F7') {
-                    a = parseInt(a);
-                    b = parseInt(b);
-                    display.textContent = a / b;
-                    a = String(display.textContent);
-                    b = undefined;
-                }else if (orangeBorder.textContent === '\u00D7') {
-                    a = parseInt(a);
-                    b = parseInt(b);
-                    display.textContent = a * b;
-                    a = String(display.textContent);
-                    b = undefined;
+            if (b) {
+                if (orangeBorder.classList.contains('active')) {
+                    orangeBorder.classList.remove('active');
+                    if (orangeBorder.textContent === '+') {
+                        a = parseInt(a);
+                        b = parseInt(b);
+                        display.textContent = a + b;
+                        a = String(display.textContent);
+                        b = undefined;
+                    }else if (orangeBorder.textContent === '-') {
+                        a = parseInt(a);
+                        b = parseInt(b);
+                        display.textContent = a - b;
+                        a = String(display.textContent);
+                        b = undefined;
+                    }else if (orangeBorder.textContent === '\u00F7') {
+                        a = parseInt(a);
+                        b = parseInt(b);
+                        if (a % b === 0){
+                            display.textContent = a / b;
+                        }else {
+                            display.textContent = (a / b).toFixed(4);
+                        }
+                        a = String(display.textContent);
+                        b = undefined;
+                    }else if (orangeBorder.textContent === '\u00D7') {
+                        a = parseInt(a);
+                        b = parseInt(b);
+                        display.textContent = a * b;
+                        a = String(display.textContent);
+                        b = undefined;
+                    }
                 }
             }
             orangeBorder.style.border = '1px solid rgb(33, 36, 61)';
         })
         orangeButton.style.backgroundColor = 'rgba(239, 153, 23, 1)';
-        (orangeButton.textContent !== '=') ? orangeButton.style.border = '3px solid rgb(33, 36, 61)' : orangeButton.style.border = '1px solid rgb(33, 36, 61)';
-        orangeButton.classList.add('active');
+        if (orangeButton.textContent !== '=') {
+            orangeButton.style.border = '3px solid rgb(33, 36, 61)';
+            orangeButton.classList.add('active');
+        }
         })
         }
 )
 
 function clear() {
     display.textContent = '0';
+    orangeButtons.forEach((orangeButton) => {
+        orangeButton.style.border = '1px solid rgb(33, 36, 61)';
+        if (orangeButton.classList.contains('active')) {
+            orangeButton.classList.remove('active');
+        }
+        a = display.textContent;
+        b = undefined;
+    })
 }
