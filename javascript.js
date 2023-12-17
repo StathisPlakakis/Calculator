@@ -2,6 +2,10 @@ const buttons = document.querySelectorAll('.button');
 const darkButtons = document.querySelectorAll('.dark');
 const orangeButtons = document.querySelectorAll('.orange');
 const display = document.querySelector('.display');
+const dot = document.querySelector('.dot');
+
+let a;
+let b;
 
 buttons.forEach((button) => {
     button.addEventListener('mousedown', () => {
@@ -18,22 +22,48 @@ orangeButtons.forEach((orangeButton) => {
         orangeButton.style.backgroundColor = 'rgba(239, 153, 23, 0.9)';
     })
 })
+
+dot.addEventListener('mousedown', () => {
+    dot.style.backgroundColor = 'rgba(207, 202, 202, 0.9)';
+})
+
+dot.addEventListener('click', () => {
+    dot.style.backgroundColor = 'rgba(207, 202, 202, 1)';
+})
+
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(button.textContent)) {
-            if (display.textContent === '0') {
-                button.style.backgroundColor = 'rgb(207, 202, 202)';
-                display.textContent = button.textContent;
-            }else{
-                button.style.backgroundColor = 'rgb(207, 202, 202)';
-                display.textContent += button.textContent;          
+        button.style.backgroundColor = 'rgba(207, 202, 202, 1)';
+         const arr = Array.from(orangeButtons);
+         if (arr.some((orangeButton) => {
+            return orangeButton.classList.contains('active');
+         })) {
+            if(!b) {
+                clear();
             }
-        }
-    })
-})
+            if (display.textContent === '0') {
+                display.textContent = button.textContent;
+                b = display.textContent
+            }else {
+                display.textContent += button.textContent;
+                b = display.textContent;
+            }
+         }else {
+            if (display.textContent === '0') {
+                display.textContent = button.textContent;
+                a = display.textContent
+            }else {
+                display.textContent += button.textContent;
+                a = display.textContent;
+            }
+         }
+    }
+)})
+
 
 darkButtons.forEach((darkButton) => {
     darkButton.addEventListener('click', () => {
+        darkButton.style.backgroundColor = 'rgba(112, 114, 132, 1)';
         if (darkButton.textContent === 'C') {
             darkButton.style.backgroundColor = 'rgba(112, 114, 132, 1)';
             clear();
@@ -44,12 +74,23 @@ darkButtons.forEach((darkButton) => {
 orangeButtons.forEach((orangeButton) => {
     orangeButton.addEventListener('click', () => {
         orangeButtons.forEach((orangeBorder) => {
+            if (orangeBorder.classList.contains('active')) {
+                orangeBorder.classList.remove('active');
+                if (orangeBorder.textContent === '+') {
+                    a = parseInt(a);
+                    b = parseInt(b);
+                    display.textContent = a + b;
+                    a = String(display.textContent);
+                    b = undefined;
+                }
+            }
             orangeBorder.style.border = '1px solid rgb(33, 36, 61)';
         })
         orangeButton.style.backgroundColor = 'rgba(239, 153, 23, 1)';
         (orangeButton.textContent !== '=') ? orangeButton.style.border = '3px solid rgb(33, 36, 61)' : orangeButton.style.border = '1px solid rgb(33, 36, 61)';
+        orangeButton.classList.add('active');
+        })
         }
-)}
 )
 
 function clear() {

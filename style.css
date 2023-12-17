@@ -48,16 +48,43 @@ body {
     align-items: center;
     font-size: 60px;
     border: 1px solid rgb(33, 36, 61);
-    color: white
-    ;
+    color: white;
 }
 
 .dark {
     background-color:rgba(112, 114, 132, 1);
+    width: 137.5px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    border: 1px solid rgb(33, 36, 61);
+    color: white;
 }
 
 .orange {
     background-color:rgba(239, 153, 23, 1);
+    width: 137.5px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    border: 1px solid rgb(33, 36, 61);
+    color: white;
+}
+
+.dot {
+    background-color: rgba(207, 202, 202, 1);
+    width: 137.5px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    border: 1px solid rgb(33, 36, 61);
+    color: white;
 }
 
 
