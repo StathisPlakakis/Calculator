@@ -75,6 +75,9 @@ darkButtons.forEach((darkButton) => {
         }else if (darkButton.textContent === '+/-') {
             display.textContent = String(-1 * Number(display.textContent));
             b ? b = display.textContent : a = display.textContent;
+        }else {
+            display.textContent = String(Number((display.textContent / 100).toFixed(2)));
+            b ? b = display.textContent : a = display.textContent;
         }
     })
 })
