@@ -71,8 +71,10 @@ darkButtons.forEach((darkButton) => {
     darkButton.addEventListener('click', () => {
         darkButton.style.backgroundColor = 'rgba(112, 114, 132, 1)';
         if (darkButton.textContent === 'C') {
-            darkButton.style.backgroundColor = 'rgba(112, 114, 132, 1)';
             clear();
+        }else if (darkButton.textContent === '+/-') {
+            display.textContent = String(-1 * Number(display.textContent));
+            b ? b = display.textContent : a = display.textContent;
         }
     })
 })
