@@ -95,7 +95,7 @@ orangeButtons.forEach((orangeButton) => {
                         if (a % b === 0){
                             display.textContent = a / b;
                         }else {
-                            display.textContent = (a / b).toFixed(4);
+                            display.textContent = parseFloat((a / b).toFixed(2));
                         }
                         a = String(display.textContent);
                         b = undefined;
