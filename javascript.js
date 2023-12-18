@@ -35,6 +35,9 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         button.style.backgroundColor = 'rgba(207, 202, 202, 1)';
          const arr = Array.from(orangeButtons);
+         if (display.textContent === 'troll') {
+            clear();
+         }
          if (arr.some((orangeButton) => {
             return orangeButton.classList.contains('active');
          })) {
@@ -78,30 +81,35 @@ orangeButtons.forEach((orangeButton) => {
                 if (orangeBorder.classList.contains('active')) {
                     orangeBorder.classList.remove('active');
                     if (orangeBorder.textContent === '+') {
-                        a = parseInt(a);
-                        b = parseInt(b);
+                        a = Number(a);
+                        b = Number(b);
                         display.textContent = a + b;
                         a = String(display.textContent);
                         b = undefined;
                     }else if (orangeBorder.textContent === '-') {
-                        a = parseInt(a);
-                        b = parseInt(b);
+                        a = Number(a);
+                        b = Number(b);
                         display.textContent = a - b;
                         a = String(display.textContent);
                         b = undefined;
                     }else if (orangeBorder.textContent === '\u00F7') {
-                        a = parseInt(a);
-                        b = parseInt(b);
-                        if (a % b === 0){
-                            display.textContent = a / b;
+                        a = Number(a);
+                        b = Number(b);
+                        if (b === 0) {
+                            display.textContent = "troll";
                         }else {
-                            display.textContent = parseFloat((a / b).toFixed(2));
+                            if (a % b === 0){
+                                display.textContent = a / b;
+                            }else {
+                                display.textContent = Number((a / b).toFixed(2));
+                            }
+                            a = String(display.textContent);
+                            b = undefined;
                         }
-                        a = String(display.textContent);
-                        b = undefined;
+                        
                     }else if (orangeBorder.textContent === '\u00D7') {
-                        a = parseInt(a);
-                        b = parseInt(b);
+                        a = Number(a);
+                        b = Number(b);
                         display.textContent = a * b;
                         a = String(display.textContent);
                         b = undefined;
