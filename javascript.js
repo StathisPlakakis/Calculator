@@ -92,13 +92,13 @@ orangeButtons.forEach((orangeButton) => {
                     b = Number(b);
                     if (orangeBorder.textContent === '+') {
                         (String(a + b).includes('.')) ?
-                        display.textContent = Number((a + b).toFixed(2)) :
+                        display.textContent = Number((a + b).toFixed(5)) :
                         display.textContent = a + b;
                         a = String(display.textContent);
                         b = undefined;
                     }else if (orangeBorder.textContent === '-') {
                         (String(a - b).includes('.')) ?
-                        display.textContent = Number((a - b).toFixed(2)) :
+                        display.textContent = Number((a - b).toFixed(5)) :
                         display.textContent = a - b;
                         a = String(display.textContent);
                         b = undefined;
@@ -109,7 +109,7 @@ orangeButtons.forEach((orangeButton) => {
                             if (a % b === 0){
                                 display.textContent = a / b;
                             }else {
-                                display.textContent = Number((a / b).toFixed(2));
+                                display.textContent = Number((a / b).toFixed(5));
                             }
                             a = String(display.textContent);
                             b = undefined;
@@ -117,7 +117,7 @@ orangeButtons.forEach((orangeButton) => {
                         
                     }else if (orangeBorder.textContent === '\u00D7') {
                         (String(a * b).includes('.')) ?
-                        display.textContent = Number((a * b).toFixed(2)) :
+                        display.textContent = Number((a * b).toFixed(5)) :
                         display.textContent = a * b;
                         a = String(display.textContent);
                         b = undefined;
@@ -146,3 +146,36 @@ function clear() {
         b = undefined;
     })
 }
+
+document.body.addEventListener('keypress', (e) => {
+    let key = String(e.key);
+    if ('0123456789'.includes(key)) {
+                 const arr = Array.from(orangeButtons);
+                 if (display.textContent === 'troll') {
+                    clear();
+                 }
+                 if (arr.some((orangeButton) => {
+                    return orangeButton.classList.contains('active');
+                 })) {
+                    if(!b) {
+                        display.textContent = '0';
+                    }
+                    if (display.textContent === '0') {
+                        display.textContent = key;
+                        b = display.textContent
+                    }else {
+                        display.textContent += key;
+                        b = display.textContent;
+                    }
+                 }else {
+                    if (display.textContent === '0') {
+                        display.textContent = key;
+                        a = display.textContent
+                    }else {
+                        display.textContent += key;
+                        a = display.textContent;
+                    }
+                 }
+            
+    }
+})
