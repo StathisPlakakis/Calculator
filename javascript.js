@@ -29,6 +29,9 @@ dot.addEventListener('mousedown', () => {
 
 dot.addEventListener('click', () => {
     dot.style.backgroundColor = 'rgba(207, 202, 202, 1)';
+    if (!display.textContent.includes('.')) {
+        display.textContent += '.'
+    }
 })
 
 buttons.forEach((button) => {
@@ -80,21 +83,21 @@ orangeButtons.forEach((orangeButton) => {
             if (b) {
                 if (orangeBorder.classList.contains('active')) {
                     orangeBorder.classList.remove('active');
+                    a = Number(a);
+                    b = Number(b);
                     if (orangeBorder.textContent === '+') {
-                        a = Number(a);
-                        b = Number(b);
+                        (String(a + b).includes('.')) ?
+                        display.textContent = Number((a + b).toFixed(2)) :
                         display.textContent = a + b;
                         a = String(display.textContent);
                         b = undefined;
                     }else if (orangeBorder.textContent === '-') {
-                        a = Number(a);
-                        b = Number(b);
+                        (String(a - b).includes('.')) ?
+                        display.textContent = Number((a - b).toFixed(2)) :
                         display.textContent = a - b;
                         a = String(display.textContent);
                         b = undefined;
                     }else if (orangeBorder.textContent === '\u00F7') {
-                        a = Number(a);
-                        b = Number(b);
                         if (b === 0) {
                             display.textContent = "troll";
                         }else {
@@ -108,8 +111,8 @@ orangeButtons.forEach((orangeButton) => {
                         }
                         
                     }else if (orangeBorder.textContent === '\u00D7') {
-                        a = Number(a);
-                        b = Number(b);
+                        (String(a * b).includes('.')) ?
+                        display.textContent = Number((a * b).toFixed(2)) :
                         display.textContent = a * b;
                         a = String(display.textContent);
                         b = undefined;
