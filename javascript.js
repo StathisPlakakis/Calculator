@@ -188,6 +188,7 @@ document.body.addEventListener('keypress', (e) => {
         }
     }else if ('/*-+='.includes(key)) {
         orangeButtons.forEach((orangeBorder) => {
+            orangeBorder.style.border = '1px solid rgb(33, 36, 61)';
             if (b) {
                 if (orangeBorder.classList.contains('active')) {
                     orangeBorder.classList.remove('active');
@@ -227,24 +228,23 @@ document.body.addEventListener('keypress', (e) => {
                     }
                 }
             }
-            orangeBorder.style.border = '1px solid rgb(33, 36, 61)';
-            if (key === '+') {
-                if (orangeBorder.textContent !== '+') {
+           if (key === '+') {
+                if (orangeBorder.textContent === '+') {
                     orangeBorder.style.border = '3px solid rgb(33, 36, 61)';
                     orangeBorder.classList.add('active');
                 }
             }else if (key === '-') {
-                if (orangeBorder.textContent !== '-') {
+                if (orangeBorder.textContent === '-') {
                     orangeBorder.style.border = '3px solid rgb(33, 36, 61)';
                     orangeBorder.classList.add('active');
                 }
             }else if (key === '/') {
-                if (orangeBorder.textContent !== '\u00F7') {
+                if (orangeBorder.textContent === '\u00F7') {
                     orangeBorder.style.border = '3px solid rgb(33, 36, 61)';
                     orangeBorder.classList.add('active');
                 }
             }else if (key === '*') {
-                if (orangeBorder.textContent !== '\u00D7') {
+                if (orangeBorder.textContent === '\u00D7') {
                     orangeBorder.style.border = '3px solid rgb(33, 36, 61)';
                     orangeBorder.classList.add('active');
                 }
