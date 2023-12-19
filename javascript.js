@@ -177,5 +177,78 @@ document.body.addEventListener('keypress', (e) => {
                     }
                  }
             
+    }else if (key === 'c') {
+        clear()
+    }else if (key === '%') {
+        display.textContent = String(Number((display.textContent / 100).toFixed(2)));
+        b ? b = display.textContent : a = display.textContent;
+    }else if (key === '.') {
+        if (!display.textContent.includes('.')) {
+            display.textContent += '.';
+        }
+    }else if ('/*-+='.includes(key)) {
+        orangeButtons.forEach((orangeBorder) => {
+            if (b) {
+                if (orangeBorder.classList.contains('active')) {
+                    orangeBorder.classList.remove('active');
+                    a = Number(a);
+                    b = Number(b);
+                    if (orangeBorder.textContent === '+') {
+                        (String(a + b).includes('.')) ?
+                        display.textContent = Number((a + b).toFixed(5)) :
+                        display.textContent = a + b;
+                        a = String(display.textContent);
+                        b = undefined;
+                    }else if (orangeBorder.textContent === '-') {
+                        (String(a - b).includes('.')) ?
+                        display.textContent = Number((a - b).toFixed(5)) :
+                        display.textContent = a - b;
+                        a = String(display.textContent);
+                        b = undefined;
+                    }else if (orangeBorder.textContent === '\u00F7') {
+                        if (b === 0) {
+                            display.textContent = "troll";
+                        }else {
+                            if (a % b === 0){
+                                display.textContent = a / b;
+                            }else {
+                                display.textContent = Number((a / b).toFixed(5));
+                            }
+                            a = String(display.textContent);
+                            b = undefined;
+                        }
+                        
+                    }else if (orangeBorder.textContent === '\u00D7') {
+                        (String(a * b).includes('.')) ?
+                        display.textContent = Number((a * b).toFixed(5)) :
+                        display.textContent = a * b;
+                        a = String(display.textContent);
+                        b = undefined;
+                    }
+                }
+            }
+            orangeBorder.style.border = '1px solid rgb(33, 36, 61)';
+            if (key === '+') {
+                if (orangeBorder.textContent !== '+') {
+                    orangeBorder.style.border = '3px solid rgb(33, 36, 61)';
+                    orangeBorder.classList.add('active');
+                }
+            }else if (key === '-') {
+                if (orangeBorder.textContent !== '-') {
+                    orangeBorder.style.border = '3px solid rgb(33, 36, 61)';
+                    orangeBorder.classList.add('active');
+                }
+            }else if (key === '/') {
+                if (orangeBorder.textContent !== '\u00F7') {
+                    orangeBorder.style.border = '3px solid rgb(33, 36, 61)';
+                    orangeBorder.classList.add('active');
+                }
+            }else if (key === '*') {
+                if (orangeBorder.textContent !== '\u00D7') {
+                    orangeBorder.style.border = '3px solid rgb(33, 36, 61)';
+                    orangeBorder.classList.add('active');
+                }
+            }
+        })
     }
 })
